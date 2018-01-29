@@ -1,0 +1,16 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLinkActive]="['active']" [routerLink]="['welcome']">License Registration</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a  [routerLink]="['license-registration']">Apply</a></li>
+      <li><a  [routerLink]="['submitted-applications']">Submitted Applications</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<ng4-loading-spinner [loadingText]="'Please wait...'"> </ng4-loading-spinner>

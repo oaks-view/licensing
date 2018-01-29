@@ -1,0 +1,74 @@
+<form #frm="ngForm" novalidate>
+    <div class="container">
+        <h1>License Application</h1>
+        <p>Please fill the following form to apply</p>
+        <hr>
+
+        <div class="form-group col-md-6 col-xs-12">
+            <label>
+                <b>First Name</b>
+            </label>
+            <input [(ngModel)]="licenseApplication.firstName" type="text" placeholder="Enter first Name" name="firstName"  class="form-control">
+        </div>
+
+        <div class="form-group col-md-6 col-xs-12">
+            <label>
+                <b>Last Name</b>
+            </label>
+            <input [(ngModel)]="licenseApplication.lastName" type="text" placeholder="Enter last Name" name="lastName" class="form-control">
+        </div>
+
+        <div class="form-group col-md-6 col-xs-12">
+            <label>
+                <b>Date Of Birth</b>
+            </label>
+            <input [(ngModel)]="licenseApplication.dateOfBirth" type="date" placeholder="Enter date of birth" name="dateOfBirth" class="form-control">
+        </div>
+
+        <div class="form-group col-md-6 col-xs-12">
+            <label>
+                <b>Email</b>
+            </label>
+            <input [(ngModel)]="licenseApplication.email" type="text" placeholder="Enter Email" name="email" class="form-control">
+        </div>
+
+        <div class="form-group col-md-6 col-xs-12">
+            <label>
+                <b>State of Origin</b>
+            </label>
+            <select name="stateOfOrigin" class="form-control" required [(ngModel)]="licenseApplication.stateOfOrigin">
+                    <option [ngValue]="null">select a state</option>
+                    <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-6 col-xs-12">
+                <label>
+                    <b>Address</b>
+                </label>
+                <input [(ngModel)]="licenseApplication.address" type="text" placeholder="Enter state of origin" name="address" class="form-control">
+            </div>
+        
+        <div class="form-group col-md-6 col-xs-12">
+            <label>Occupation</label>
+            <input [(ngModel)]="licenseApplication.occupation" type="text" placeholder="Enter Occupation" name="occupation" class="form-control">            
+        </div>            
+        <!-- to do add validation -->
+        <!-- <div class="form-group col-md-6">
+            <label>Attach pdf file</label>
+            <input type="file" accept=".pdf" />
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Attach ms word file</label>
+            <input type="file" accept=".doc" />
+        </div> -->
+        
+
+        <div class="form-group col-md-12">
+            <button class="btn btn-default">Cancel</button>
+            <button class="btn btn-primary" [disabled]="!licenseApplication.isValid" (click)="submitApplication()">Submit</button>
+        </div>
+
+    </div>
+</form>

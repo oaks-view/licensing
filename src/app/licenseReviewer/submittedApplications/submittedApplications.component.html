@@ -1,0 +1,49 @@
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Applicant Name</th>
+                <th>Application Date</th>
+                <th>Occupation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let application of submittedApplications | async">
+                <td>
+                    <a data-toggle="modal" data-target="#myModal"
+                     (click)="setSelectedApplication(application)">{{application.firstName}} {{application.lastName}}</a>
+                </td>
+                <td>{{application.created | date: 'dd/MM/yyyy'}}</td>
+                <td>{{application.occupation}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" *ngIf="selectedApplication">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Application for <b> {{selectedApplication.firstName}} {{selectedApplication.lastName}}</b></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <p><b>Applicant Name: </b> {{selectedApplication.firstName}} {{selectedApplication.lastName}}</p>
+                        <p><b>Residential Address: </b> {{selectedApplication.address}}</p>
+                        <p><b>Applicant Birth Date: </b> {{selectedApplication.dateOfBirth | date: 'dd/MM/yyyy'}}</p>
+                        <p><b>State of Origin:</b> {{selectedApplication.stateOfOrigin}}</p>
+                        <p><b>Occupation: </b> {{selectedApplication.occupation}}</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" (click)="updateSelectedApplicationStatus()" class="btn btn-success" data-dismiss="modal">Approve</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
